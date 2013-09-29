@@ -1,21 +1,18 @@
 <?php
 
-class m130928_203259_create_issue_user_and_assignment_tables extends CDbMigration
+class m130928_215011_create_all_table extends CDbMigration
 {
 //	public function up()
 //	{
-//            
-//            
 //	}
 //
 //	public function down()
 //	{
-//		echo "m130928_203259_create_issue_user_and_assignment_tables does not support migration down.\n";
+//		echo "m130928_215011_create_all_table does not support migration down.\n";
 //		return false;
 //	}
 
-	
-	// Use safeUp/safeDown to do migration with transaction
+		// Use safeUp/safeDown to do migration with transaction
 	public function safeUp()
 	{
             //create the issue table
@@ -81,5 +78,4 @@ class m130928_203259_create_issue_user_and_assignment_tables extends CDbMigratio
             $this->dropTable('tbl_user');
             
 	}
-	
 }
