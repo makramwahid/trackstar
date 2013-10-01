@@ -48,6 +48,8 @@ class Project extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+                    'issues' => array(self::HAS_MANY,'Issue','project_id'),
+                    'users' => array(self::MANY_MANY,'User','tbl_project_user_assignment(project_id, user_id)'),  
 		);
 	}
 
@@ -108,4 +110,25 @@ class Project extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+//        public function getIssueList($pk){
+//            //instantiate the Project model instance by primary key:
+//            $project = Project::model()->findByPk(1);
+//            //get an array of all associated Issue AR instances
+//            $allProjectIssues = $project->issues;
+//            //get an array of all associated User AR instance
+//            $allUsers = $project->users;
+//            //get the User AR instance representing the owner of
+//            //the first issue associated with this project
+//            $ownerOfFirstIssue = $project->issues[0]->owner;
+//            
+//            
+//        }
+//        
+        
+        public function getUserOptions(){
+            $userArray = CHtml::listData($this->users,'id', 'username');   //$this->users property defined in relations method of this class, its an array of AR instances
+            return $userArray;  //array prepared by listData function of CHTML class
+        }
+        
 }
